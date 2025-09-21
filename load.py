@@ -1,3 +1,3 @@
 from skyfield.api import load
 
-planets = load('de440.bsp')
+bodies = load('de440.bsp')
