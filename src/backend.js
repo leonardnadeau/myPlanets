@@ -19,16 +19,19 @@ async function getCoordinates() {
   }
 }
 
-function updatePositions() {
-    console.log(updateCoordinates());
+function getNewPositions() {
+    updateCoordinates();
+    let newPositions = {};
     getCoordinates().then(coordinates => {
         for (body in coordinates) {
             let [x, y] = transformXYZ(coordinates[body]);
-            let bodyElement = document.getElementById(`#${body}`);
-            bodyElement.style.left = `calc(${x} * 1%)`;
-            bodyElement.style.top = `calc(${y} * 1%)`;
+            let left =  `calc(${x} * 1%)`;
+            let top = `calc(${y} * 1%)`;
+            let angle = Math.atan(y/x);
+            newPositions[body] = [left, top, angle];
         }
     });
+    return newPositions;
 }
 
 function transformXYZ(xyz) {
@@ -43,5 +46,4 @@ function transformXYZ(xyz) {
     return [x, y];
 }
 
-
-setInterval(updatePositions, 1000);
+getNewPositions();
