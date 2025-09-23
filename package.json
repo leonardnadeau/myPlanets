@@ -1,0 +1,21 @@
+{
+  "name": "pyplanets",
+  "version": "1.0.0",
+  "description": "Watch our solar system's planets' position in real time!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardnadeau/pyPlanets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonardnadeau/pyPlanets/issues"
+  },
+  "homepage": "https://github.com/leonardnadeau/pyPlanets#readme",
+  "type": "module"
+}
