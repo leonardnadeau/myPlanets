@@ -34,8 +34,7 @@ header {
 
 .logo:hover {
     color: rgba(240, 240, 240, 0.25);
-    transform: scale(1.02);
-    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
 }
 
 .navbar {
@@ -95,6 +94,7 @@ main {
 .system-container {
     margin: 0 auto;
     width: 60vw;
+    min-width: fit-content;
     max-width: 600px;
     height: 60vw;
     max-height: 600px;
@@ -104,8 +104,9 @@ main {
     justify-content: center;
 }
 
+
+
 #sun {
-    background-color: yellow;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -115,7 +116,13 @@ main {
     justify-content: center;
 }
 
-#sun > * {
+#sun > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#sun > div {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -123,10 +130,38 @@ main {
     background-color: red;
 }
 
-#sun > #moon, #sun > #mercury {
+.body#mercury {
+    background-color: aqua;
+}
+
+.body#venus {
+    background-color: brown;
+}
+
+.body#earth {
+    background-color: orange;
+}
+
+.body#moon {
+    background-color: orange;
+}
+
+.body#mars {
     background-color: green;
 }
 
-#sun > #earth {
-    background-color: orange;
+.body#jupiter {
+    background-color: darkcyan;
+}
+
+.body#saturn {
+    background-color: deeppink;
+}
+
+.body#uranus {
+    background-color: floralwhite;
+}
+
+.body#neptune {
+    background-color: khaki;
 }

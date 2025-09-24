@@ -66,8 +66,10 @@ async function getNewPositions() {
         let coordinates = await getCoordinates();
         for (let body in coordinates) {
             let [x, y] = transformXYZ(coordinates[body]);
+            x = Math.pow(Math.abs(x), 1/3) * 50 * Math.sign(x);
+            y = Math.pow(Math.abs(y), 1/3) * 50 * Math.sign(y);
             let angle = Math.atan(y/x);
-            newPositions[body] = [x, y, angle].map(q => Math.round(q));
+            newPositions[body] = [x, y, angle];
         }
     } catch (error) {
         console.log("Error getting coordinates:", error);
@@ -76,15 +78,18 @@ async function getNewPositions() {
 }
 
 function transformXYZ(xyz) {
-    let x = xyz[0];
-    let y = xyz[1];
-    let z = xyz[2];
+    let distance = Math.sqrt(Math.pow(xyz[0], 2) + Math.pow(xyz[1], 2) + Math.pow(xyz[2], 2));
 
-    let xFraction = x / (x + y);
-    let yFraction = y / (x + y);
-    // x += z * xFraction;
-    // y += z * yFraction;
-    return [x, y];
+    let left = xyz[0];
+    let top = xyz[1];
+    let leftFraction = Math.abs(left) / (Math.abs(left) + Math.abs(top));
+    let topFraction = 1 - leftFraction;
+
+    left += leftFraction * xyz[0] * Math.sign(left);
+    top += topFraction * xyz[0] * Math.sign(top);
+
+    let distance2 = Math.sqrt(Math.pow(left, 2) + Math.pow(top, 2));
+    return [left, top];
 }
 
 app.listen(5500, () => console.log('Backend running'));
