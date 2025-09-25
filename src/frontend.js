@@ -15,4 +15,4 @@ async function updatePositions() {
 }
 
 updatePositions();
-setInterval(updatePositions, 5 * 1000); // 2 * 60 * 60 * 1000
+setInterval(updatePositions, 2 * 60 * 60 * 1000); // 2 * 60 * 60 * 1000

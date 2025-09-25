@@ -69,14 +69,14 @@ async function getNewPositions() {
 
             if (body === 'moon') {
                 [x, y] = getXyFromRadius(x, y, 5);
-                newPositions[body] = [x, y, 0.0];
+                newPositions[body] = [x, -1 * y, 0.0];
                 continue;
             }
 
             [x, y] = getXyFromRadius(x, y, distance);
 
             let angle = 0.0;
-            newPositions[body] = [x, y, angle];
+            newPositions[body] = [x, -1 * y, angle];
             distance += 40;
         }
     } catch (error) {
