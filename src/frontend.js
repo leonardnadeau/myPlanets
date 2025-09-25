@@ -14,5 +14,25 @@ async function updatePositions() {
     }
 }
 
+let distance = 90;
+for (let orbit of document.getElementsByClassName('orbit-planet')) {
+    orbit.style.width = `${distance}px`;
+    orbit.style.height = `${distance}px`;
+    distance += 80;
+}
+
+let isOrbitsOn = true;
+function toggleOrbits() {
+    isOrbitsOn = !isOrbitsOn;
+    if (isOrbitsOn) {
+        document.getElementsByClassName('orbit-planet').style.display = block;        document.getElementsByClassName('orbit-planet').style.display = block;
+        document.getElementsByClassName('orbit-moon').style.display = block;
+    }
+    else {
+        document.getElementsByClassName('orbit-planet').style.display = none;        document.getElementsByClassName('orbit-planet').style.display = block;
+        document.getElementsByClassName('orbit-moon').style.display = none;
+    }
+}
+
 updatePositions();
-setInterval(updatePositions, 2 * 60 * 60 * 1000); // 2 * 60 * 60 * 1000
+setInterval(updatePositions, 10 * 1000); // 2 * 60 * 60 * 1000

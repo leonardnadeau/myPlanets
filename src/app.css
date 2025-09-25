@@ -94,7 +94,6 @@ main {
 }
 
 .system-container {
-    transition: box-shadow 0.3s ease-in-out, background-image 0.3s ease-in-out;
     margin: 0 auto;
     width: 750px;
     height: 750px;
@@ -103,7 +102,7 @@ main {
     align-items: center;
     justify-content: center;
     background-image: radial-gradient(rgb(55, 55, 55), rgb(50, 50, 50) 10%, rgb(45, 45, 45) 40%);
-    box-shadow: 0 0 10px rgba(100, 100, 100, 0.5), 0 0 20px rgba(50, 50, 50, 0.5), 0 0 5px var(--dark-green), 0 0 5px var(--dark-blue);
+    box-shadow: 0 0 10px rgba(100, 100, 100, 0.5), 0 0 20px rgba(50, 50, 50, 0.5);
 }
 
 #sun {
@@ -205,6 +204,7 @@ div.hover-text {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient()
 }
 
 div.hover-text > p {
@@ -219,6 +219,7 @@ div.hover-text:hover > p {
     background-color: rgba(128, 128, 128, 0.66);
     padding: 2.5px 5px;
     border-radius: 5px;
+    transition-delay: 0.1s
 }
 
 #sun > .hover-text > p {
@@ -259,4 +260,25 @@ div.hover-text:hover > p {
 
 #neptune > .hover-text > p {
     top: 30px;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.orbit-planet {
+    position: absolute;
+    outline: 1px solid rgba(200, 200, 200, 0.25);
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+}
+
+.orbit-moon {
+    position: absolute;
+    outline: 1px solid rgba(200, 200, 200, 0.25);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
 }
