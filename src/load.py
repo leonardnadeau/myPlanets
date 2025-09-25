@@ -15,5 +15,5 @@ saturn = bodies['saturn barycenter']
 uranus = bodies['uranus barycenter']
 neptune = bodies['neptune barycenter']
 
-system = [mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune]
-names = ['mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+system = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+names = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']

@@ -6,9 +6,13 @@ async function updatePositions() {
 
     for (const [body, data] of Object.entries(positions)) {
         const element = document.getElementById(body);
+        if (body === 'moon') {
+            element.style.transform = `translate(${data[0] * 4.5}0px, ${data[1] * 4.5}px)`;
+            continue;
+        }
         element.style.transform = `translate(${data[0]}0px, ${data[1]}0px)`; // rotate(${data[2]})
     }
 }
 
-updatePositions()
-setInterval(updatePositions, 2 * 60 * 60 * 1000); // 2 * 60 * 60 * 1000
+updatePositions();
+setInterval(updatePositions, 5 * 1000); // 2 * 60 * 60 * 1000
