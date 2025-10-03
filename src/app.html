@@ -13,7 +13,6 @@
             </a>
             <nav class="navbar">
                 <a href="">This Project</a><!--ThisProject-->
-                <a href="">About Me</a><!--aboutme-->
             </nav>
         </header>
         <main>
@@ -29,47 +28,61 @@
                         <div class="orbit-planet"></div>
                         <div class="orbit-planet"></div>
                         <div class="orbit-planet"></div>
-                        <div class="hover-text"><p class="no-select">Sun</p></div>
+                        <div class="click-text"><p class="no-select">Sun</p></div>
                         <img src="../imgs/sun.jpg" alt="sun">
                         <div class="body" id="mercury">
-                            <div class="hover-text"><p class="no-select">Mercury</p></div>
+                            <div class="click-text"><p class="no-select">Mercury</p></div>
                             <img src="../imgs/mercury.jpg" alt="mercury">
                         </div>
                         <div class="body" id="venus">
-                            <div class="hover-text"><p class="no-select">Venus</p></div>
+                            <div class="click-text"><p class="no-select">Venus</p></div>
                             <img src="../imgs/venus.jpg" alt="venus">
                         </div>
                         <div class="body" id="earth">
                             <div class="orbit-moon"></div>
-                            <div class="hover-text"><p class="no-select">Earth</p></div>
+                            <div class="click-text"><p class="no-select">Earth</p></div>
                             <img src="../imgs/earth.jpg" alt="earth">
                             <div class="body" id="moon">
-                                <div class="hover-text"><p class="no-select">Moon</p></div>
+                                <div class="click-text"><p class="no-select">Moon</p></div>
                                 <img src="../imgs/moon.jpg" alt="moon">
                             </div>
                         </div>
                         <div class="body" id="mars">
-                            <div class="hover-text"><p class="no-select">Mars</p></div>
+                            <div class="click-text"><p class="no-select">Mars</p></div>
                             <img src="../imgs/mars.jpg" alt="mars">
                         </div>
                         <div class="body" id="jupiter">
-                            <div class="hover-text"><p class="no-select">Jupiter</p></div>
+                            <div class="click-text"><p class="no-select">Jupiter</p></div>
                             <img src="../imgs/jupiter.jpg" alt="jupiter">
                         </div>
                         <div class="body" id="saturn">
-                            <div class="hover-text"><p class="no-select">Saturn</p></div>
+                            <div class="click-text"><p class="no-select">Saturn</p></div>
                             <img src="../imgs/saturn.png" alt="saturn">
                         </div>
                         <div class="body" id="uranus">
-                            <div class="hover-text"><p class="no-select">Uranus</p></div>
+                            <div class="click-text"><p class="no-select">Uranus</p></div>
                             <img src="../imgs/uranus.jpg" alt="uranus">
                         </div>
                         <div class="body" id="neptune">
-                            <div class="hover-text"><p class="no-select">Neptune</p></div>
+                            <div class="click-text"><p class="no-select">Neptune</p></div>
                             <img src="../imgs/neptune.jpg" alt="neptune">
                         </div>
                     </div>
                 </div>
+                <section class="options">
+                    <h2 class="section-header">Options</h2>
+                    <div class="option-container">
+                        <div class="option">
+                            <input id="orbit-input" type="checkbox" checked><label class="no-select" for="orbit-input">Display orbits</label>
+                        </div>
+                        <div class="option">
+                            <input id="info-input" type="checkbox" checked><label class="no-select" for="info-input">Body information</label>
+                        </div>
+                        <div class="option">
+                            <input id="name-input" type="checkbox" checked><label class="no-select" for="name-input">Body name</label>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
         <script src="frontend.js"></script>

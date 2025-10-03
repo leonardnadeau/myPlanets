@@ -34,23 +34,50 @@ app.get('/positions', async (req, res) => {
     try {
         const positions = await getNewPositions();
         res.json(positions);
-    } catch (error) {
+    }
+    catch (error) {
         console.log("Error in /positions route:", error);
         res.status(500).json({ error: "Failed to get positions" });
     }
 });
 
+app.get('/speeds', async (req, res) => {
+    try {
+        const speeds = await getNewSpeeds();
+        res.json(speeds);
+    }
+    catch (error) {
+        console.log("Error in /speeds route:", error);
+        res.status(500).json({erro: "Failed to get speeds" });
+    }
+})
+
 function updateCoordinates() {
     exec('python src/coordinates.py');
 }
 
+function updateSpeeds() {
+    exec('python src/speeds.py');
+}
+
 async function getCoordinates() {
     try {
-        const jsonString = await fs.promises.readFile("C:/Users/hungr/Desktop/R-CO-OR/Coding/Personal Projects/Python/pyPlanets/pyPlanets/coordinates.json", 'utf8');
+        const jsonString = await fs.promises.readFile("./data/coordinates.json", 'utf8');
         const data = JSON.parse(jsonString);
         return data;
     } catch (err) {
-        console.log(`Error reading/parsing file: ${err}`);
+        console.log(`Error reading/parsing coordinates file: ${err}`);
+        throw err;
+    }
+}
+
+async function getNewSpeeds() {
+    try {
+        const jsonString = await fs.promises.readFile("./data/speeds.json", 'utf8');
+        const data = JSON.parse(jsonString);
+        return data;
+    } catch (err) {
+        console.log(`Error reading/parsing speeds file: ${err}`);
         throw err;
     }
 }
@@ -84,6 +111,16 @@ async function getNewPositions() {
     }
     return newPositions;
 }
+
+// async function getNewSpeeds() {
+//     updateSpeeds();
+//     await new Promise(resolve => setTimeout(resolve, 10 * 1000))
+
+//     let newSpeeds = {};
+//     try {
+//         let speeds = await getSpeeds();
+//     }
+// }
 
 function getXyFromRadius(x, y, radius) {
     let ratio = Math.abs(x / y);

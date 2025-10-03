@@ -14,6 +14,18 @@ async function updatePositions() {
     }
 }
 
+async function updateSpeeds() {
+    const response = await fetch('http://localhost:5500/speeds', {
+        method: 'GET'
+    });
+    const speeds = await response.json();
+
+    for (const [body, data] of Object.entries(speeds)) {
+        const element = document.getElementById(body);
+        // mettre le speed dans le child info
+    }
+}
+
 let distance = 90;
 for (let orbit of document.getElementsByClassName('orbit-planet')) {
     orbit.style.width = `${distance}px`;
@@ -24,15 +36,16 @@ for (let orbit of document.getElementsByClassName('orbit-planet')) {
 let isOrbitsOn = true;
 function toggleOrbits() {
     isOrbitsOn = !isOrbitsOn;
-    if (isOrbitsOn) {
-        document.getElementsByClassName('orbit-planet').style.display = block;        document.getElementsByClassName('orbit-planet').style.display = block;
-        document.getElementsByClassName('orbit-moon').style.display = block;
+    if (isOrbitsOn) { 
+        document.getElementsByClassName('orbit-planet').style.display = 'block';
+        document.getElementsByClassName('orbit-moon').style.display = 'block';
     }
     else {
-        document.getElementsByClassName('orbit-planet').style.display = none;        document.getElementsByClassName('orbit-planet').style.display = block;
-        document.getElementsByClassName('orbit-moon').style.display = none;
+        document.getElementsByClassName('orbit-planet').style.display = 'none';
+        document.getElementsByClassName('orbit-moon').style.display = 'none';
     }
 }
 
 updatePositions();
-setInterval(updatePositions, 10 * 1000); // 2 * 60 * 60 * 1000
+updateSpeeds();
+setInterval(updatePositions, 2 * 60 * 60 * 1000); // 2 * 60 * 60 * 1000

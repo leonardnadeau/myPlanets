@@ -76,6 +76,7 @@ main {
 }
 
 .main-container {
+    position: relative;
     margin: 0 auto;
     width: 1200px;
     height: 1200px;
@@ -89,12 +90,23 @@ main {
 }
 
 .section-header {
+    position: absolute;
     color: var(--text-color);
-    margin-bottom: 1.125em;
+    background-color: rgb(200, 200, 200, 0.25);
+    padding: 0.25em 0.5em;
+    border-radius: 5px;
+    backdrop-filter: blur(0.75px);
+    border-top: 1px solid rgba(200, 200, 200, 0.4);
+    border-bottom: 1px solid rgba(50, 50, 50, 0.5);
+    box-shadow: 0 0 1px rgba(30, 30, 30, 0.75), 0 0 1px rgba(150, 150, 150, 0.5);
+    text-wrap: nowrap;
+    text-align: center;
+    font-size: 30px;
+    top: 25px;
 }
 
 .system-container {
-    margin: 0 auto;
+    margin: 15px auto 0;
     width: 750px;
     height: 750px;
     border-radius: 50%;
@@ -185,35 +197,39 @@ img {
 
 #saturn img {
     overflow: visible;
-    transform: rotate(-56.5deg) scaleY(1.53);
+    transform: rotate(-20deg) scaleY(1.53);
     z-index: -1;
 }
 
-.body > div.hover-text {
+.body > div.click-text {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.body#saturn > div.hover-text {
+.body#saturn > div.click-text {
     width: calc(100% + 50%);
 }
 
-div.hover-text {
+div.click-text {
     display: flex;
     align-items: center;
     justify-content: center;
     background-image: linear-gradient()
 }
 
-div.hover-text > p {
+div.click-text > p {
     color: transparent;
     width: fit-content;
     height: fit-content;
 }
 
-div.hover-text:hover > p {
+div.click-text:hover {
+    cursor: pointer;
+}
+
+div.click-text:hover > p {
     position: absolute;
     color: black;
     background-color: rgba(128, 128, 128, 0.66);
@@ -222,43 +238,43 @@ div.hover-text:hover > p {
     transition-delay: 0.1s
 }
 
-#sun > .hover-text > p {
+#sun > .click-text > p {
     top: 55px;
 }
 
-#mercury > .hover-text > p {
+#mercury > .click-text > p {
     top: 15px;
 }
 
-#venus > .hover-text > p {
+#venus > .click-text > p {
     top: 25px;
 }
 
-#earth > .hover-text > p {
+#earth > .click-text > p {
     top: 30px;
 }
 
-#moon > .hover-text > p {
+#moon > .click-text > p {
     top: 10px;
 }
 
-#mars > .hover-text > p {
+#mars > .click-text > p {
     top: 20px;
 }
 
-#jupiter > .hover-text > p {
+#jupiter > .click-text > p {
     top: 40px;
 }
 
-#saturn > .hover-text > p {
+#saturn > .click-text > p {
     top: 30px;
 }
 
-#uranus > .hover-text > p {
+#uranus > .click-text > p {
     top: 35px;
 }
 
-#neptune > .hover-text > p {
+#neptune > .click-text > p {
     top: 30px;
 }
 
@@ -269,7 +285,7 @@ div.hover-text:hover > p {
 
 .orbit-planet {
     position: absolute;
-    outline: 1px solid rgba(200, 200, 200, 0.25);
+    outline: 1px solid rgba(75, 75, 75, 0.75);
     width: 0px;
     height: 0px;
     border-radius: 50%;
@@ -277,8 +293,47 @@ div.hover-text:hover > p {
 
 .orbit-moon {
     position: absolute;
-    outline: 1px solid rgba(200, 200, 200, 0.25);
+    outline: 1px solid rgba(75, 75, 75, 0.75);
     width: 45px;
     height: 45px;
     border-radius: 50%;
+}
+
+.options {
+    margin-top: 2.5em;
+    border-radius: 5px;
+    width: fit-content;
+    height: 100px;
+    background-color: rgb(50, 50, 50);
+    position: relative;
+    padding: 2em;
+    color: var(--text-color);
+    box-shadow: inset 0 0 5px rgb(40, 40, 40), 0 0 5px rgba(75, 75, 75, 0.25);
+}
+
+.options > .section-header {
+    top: -17.5px;
+    left: 25px;
+    font-size: 20px;
+}
+
+.option-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.option-container > div {
+    margin: 0 1em;
+}
+
+input[type="checkbox"] {
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+.options label {
+    padding-left: 0.5em;
 }

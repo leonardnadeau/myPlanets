@@ -15,5 +15,9 @@ saturn = bodies['saturn barycenter']
 uranus = bodies['uranus barycenter']
 neptune = bodies['neptune barycenter']
 
-system = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
-names = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+system = planets
+system.extend([moon])
+planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+systemNames = planetNames
+systemNames.extend(['moon'])
