@@ -235,6 +235,7 @@ div.click-text {
     position: absolute;
     width: 14em;
     display: none;
+    z-index: 1000;
 }
 
 .info-container:hover {

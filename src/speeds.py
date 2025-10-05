@@ -5,7 +5,7 @@ from math import sqrt
 
 from datetime import datetime
 
-sleepTime = 5
+sleepTime = 10
 auPerSToKmHr = 538552334520
 
 def magnitude(xyz):
@@ -20,12 +20,14 @@ def getSpeeds():
     filepathCoordinates = './data/coordinates.json'
     with open(filepathCoordinates, 'r', encoding='utf-8') as f:
         initialCoordinates = json.load(f)
+        f.close()
 
     time.sleep(sleepTime)
     finalCoordinates = {}
     getCoordinates()
     with open(filepathCoordinates, 'r', encoding='utf-8') as f:
         finalCoordinates = json.load(f)
+        f.close()
 
     speeds = {}
     for body, name in zip(system, systemNames):
@@ -35,7 +37,6 @@ def getSpeeds():
     filepath = './data/speeds.json'
     with open(filepath, mode='w', encoding='utf-8') as f:
         json.dump(speeds, f, indent=4)
-    
-    print("wrote")
+        f.close()
 
 getSpeeds()

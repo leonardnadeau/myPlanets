@@ -7,10 +7,10 @@ async function updatePositions() {
     for (const [body, data] of Object.entries(positions)) {
         const element = document.getElementById(body);
         if (body === 'moon') {
-            element.style.transform = `translate(${data[0] * 4.5}0px, ${data[1] * 4.5}px)`;
+            element.style.transform = `translate(${data[0] * 4.5}px, ${data[1] * 4.5}px)`;
             continue;
         }
-        element.style.transform = `translate(${data[0]}0px, ${data[1]}0px)`; // rotate(${data[2]})
+        element.style.transform = `translate(${data[0]}px, ${data[1]}px)`; // rotate(${data[2]})
     }
 }
 
@@ -48,13 +48,28 @@ function infoFunctions() {
         let clickElement = body.querySelector('.click-text');
         let infoElement = clickElement.querySelector('.info-container');
         clickElement.addEventListener('click', function() {
-            if (infoElement.style.display === 'block')
+            if (infoElement.style.display === 'block') {
                 infoElement.style.display = 'none';
+                body.style.zIndex = '';
+                if (body.id === 'moon') {
+                    document.getElementById('earth').style.zIndex = '';
+                }
+            }
             else {
                 document.querySelectorAll('.info-container').forEach(function(otherInfoElement) {
                     otherInfoElement.style.display = 'none';
+                    otherInfoElement.closest('.body').style.zIndex = '';
                 });
                 infoElement.style.display = 'block';
+                document.getElementById('earth').style.zIndex = '';
+
+                if (body.id === 'moon') {
+                    document.getElementById('earth').style.zIndex = '1000';
+                    body.style.zIndex = '10';
+                } else {
+                    body.style.zIndex = '1000';
+                }
+
             }
         });
     });
@@ -63,10 +78,10 @@ function infoFunctions() {
 const hourInMs = 60 * 60 * 1000;
 function init() {
     updatePositions();
-    updateSpeeds();
     infoFunctions();
-    setInterval(updatePositions, 2 * hourInMs);
-    setInterval(updateSpeeds, 2 * hourInMs);
+    updateSpeeds();
+    setInterval(updatePositions, 2 * 60 * 60 * 1000);
+    setInterval(updateSpeeds, 2 * 60 * 60 * 1000);
 }
 
 init();
