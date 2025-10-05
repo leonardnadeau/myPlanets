@@ -22,7 +22,17 @@ async function updateSpeeds() {
 
     for (const [body, data] of Object.entries(speeds)) {
         const element = document.getElementById(body);
-        // mettre le speed dans le child info
+        let speedElement = element.querySelector('.speed');
+        let speedString = String(data.toFixed(0));
+        let stringLen = speedString.length;
+        if (stringLen > 4) {
+            while (stringLen > 3) {
+                stringLen -= 3;
+
+                speedString = speedString.slice(0, stringLen) + ' ' + speedString.slice(stringLen);
+            }
+        }
+        speedElement.innerHTML = speedString + ' ';
     }
 }
 
@@ -33,19 +43,30 @@ for (let orbit of document.getElementsByClassName('orbit-planet')) {
     distance += 80;
 }
 
-let isOrbitsOn = true;
-function toggleOrbits() {
-    isOrbitsOn = !isOrbitsOn;
-    if (isOrbitsOn) { 
-        document.getElementsByClassName('orbit-planet').style.display = 'block';
-        document.getElementsByClassName('orbit-moon').style.display = 'block';
-    }
-    else {
-        document.getElementsByClassName('orbit-planet').style.display = 'none';
-        document.getElementsByClassName('orbit-moon').style.display = 'none';
-    }
+function infoFunctions() {
+    document.querySelectorAll('.body').forEach(body => {
+        let clickElement = body.querySelector('.click-text');
+        let infoElement = clickElement.querySelector('.info-container');
+        clickElement.addEventListener('click', function() {
+            if (infoElement.style.display === 'block')
+                infoElement.style.display = 'none';
+            else {
+                document.querySelectorAll('.info-container').forEach(function(otherInfoElement) {
+                    otherInfoElement.style.display = 'none';
+                });
+                infoElement.style.display = 'block';
+            }
+        });
+    });
 }
 
-updatePositions();
-updateSpeeds();
-setInterval(updatePositions, 2 * 60 * 60 * 1000); // 2 * 60 * 60 * 1000
+const hourInMs = 60 * 60 * 1000;
+function init() {
+    updatePositions();
+    updateSpeeds();
+    infoFunctions();
+    setInterval(updatePositions, 2 * hourInMs);
+    setInterval(updateSpeeds, 2 * hourInMs);
+}
+
+init();

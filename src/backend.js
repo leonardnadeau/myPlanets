@@ -71,7 +71,11 @@ async function getCoordinates() {
     }
 }
 
+const secondInMs = 1000;
 async function getNewSpeeds() {
+    updateSpeeds();
+    await new Promise(resolve => setTimeout(resolve, 10 * secondInMs));
+
     try {
         const jsonString = await fs.promises.readFile("./data/speeds.json", 'utf8');
         const data = JSON.parse(jsonString);
@@ -84,7 +88,7 @@ async function getNewSpeeds() {
 
 async function getNewPositions() {
     updateCoordinates();
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, secondInMs));
     
     let newPositions = {};
     try {
@@ -111,16 +115,6 @@ async function getNewPositions() {
     }
     return newPositions;
 }
-
-// async function getNewSpeeds() {
-//     updateSpeeds();
-//     await new Promise(resolve => setTimeout(resolve, 10 * 1000))
-
-//     let newSpeeds = {};
-//     try {
-//         let speeds = await getSpeeds();
-//     }
-// }
 
 function getXyFromRadius(x, y, radius) {
     let ratio = Math.abs(x / y);
