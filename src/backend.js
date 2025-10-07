@@ -7,25 +7,8 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  const allowedOrigin = 'http://localhost:5500';
-
-  // Set Access-Control-Allow-Origin to the allowed origin
-  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5500');
   res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
-
-  // Allow credentials (cookies, auth headers)
-  res.header('Access-Control-Allow-Credentials', 'true');
-
-  // Allow specific HTTP methods
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-
-  // Allow specific headers
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // Handle preflight OPTIONS request
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204); // No content for preflight
-  }
 
   next();
 });
