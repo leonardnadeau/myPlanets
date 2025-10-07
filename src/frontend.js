@@ -80,8 +80,8 @@ function init() {
     updatePositions();
     infoFunctions();
     updateSpeeds();
-    setInterval(updatePositions, 5 * 1000);
-    setInterval(updateSpeeds, 5 * 1000);
+    setInterval(updatePositions, 2 * hourInMs);
+    setInterval(updateSpeeds, 2 * hourInMs);
 }
 
 init();
